@@ -1,0 +1,13 @@
+name: Demo
+
+on:
+  pull_request:
+    types: [labeled, synchronize, edited]
+
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: copapow/javascript-action-example@main
+        with:
+          path: 'sample-path'
