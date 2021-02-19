@@ -3,7 +3,7 @@ name: Bump Package Version On Merge
 on:
   push:
     branches:
-        - master
+        - main
 
 jobs:
   bump-package-version:
