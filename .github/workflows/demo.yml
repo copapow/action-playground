@@ -12,7 +12,5 @@ jobs:
       - uses: copapow/javascript-action-example@main
         with:
           path: 'sample-path'
-          major_label: 'version-major'
-          minor_label: 'version-minor'
-          patch_label: 'version-patch'
           github_token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: EndBug/add-and-commit@v7
