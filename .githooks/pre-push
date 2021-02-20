@@ -20,13 +20,12 @@
 # `git push --delete origin master`
 
 
-protected_branch='main'
+# get the default branch rather than hardcoding
+protected_branch=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
 
 policy="\n\n[Policy] Never push code directly to the "$protected_branch" branch! (Prevented with pre-push hook.)\n\n"
 
 current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
-
-echo "On branch $current_branch"
 
 push_command=$(ps -ocommand= -p $PPID)
 
