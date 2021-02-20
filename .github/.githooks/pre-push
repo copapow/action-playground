@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # @link https://gist.github.com/mattscilipoti/8424018
 #
 # Called by "git push" after it has checked the remote status,
@@ -17,6 +19,8 @@ protected_branch='main'
 policy="\n\n[Policy] Never push code directly to the "$protected_branch" branch! (Prevented with pre-push hook)\n\n"
 
 current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
+
+echo "On branch $current_branch"
 
 push_command=$(ps -ocommand= -p $PPID)
 
@@ -41,8 +45,7 @@ if [[ $push_command =~ $will_remove_protected_branch ]]; then
   do_exit
 fi
 
-# Prevent ALL pushes to protected_branch
-if [[ $push_command =~ $protected_branch ]] || [ $current_branch = $protected_branch ]; then
+if [ $current_branch = $protected_branch ]; then
   do_exit
 fi
 
