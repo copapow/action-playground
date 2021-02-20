@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "https://github.com/copapow/action-playground.git",
   "author": "Connor <18531142+powers2537@users.noreply.github.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "setup": "yarn exec $PWD/scripts/setup.sh && yarn install"
+  }
 }
