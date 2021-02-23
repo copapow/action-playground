@@ -1,0 +1,17 @@
+name: Print Tag
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Tag From Ref
+        id: tag
+        run: |
+          echo "Ref is $GITHUB_REF"
+          echo "Tag is ${GITHUB_REF/refs\/tags\//}"
+  
